@@ -3,287 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rental Up • Kenya's Smartest Rental Platform</title>
+    <title>Rental Up • Kenya's Ultimate Smart Rental & Relocation Platform</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swiper/11.1.14/swiper-bundle.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/swiper/11.1.14/swiper-bundle.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&display=swap');
-        
         :root {
             --primary: #22c55e;
             --accent: #eab308;
         }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #ffffff;
         }
-        
-        .hero-bg {
-            background: linear-gradient(45deg, rgba(0,0,0,0.85), rgba(34, 197, 94, 0.45)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a9c?q=80&w=2070') center/cover fixed;
-        }
-        
-        .nav-scrolled {
-            background: rgba(9, 9, 11, 0.98) !important;
-            box-shadow: 0 10px 30px -15px rgb(0 0 0 / 0.6);
-        }
-        
-        .listing-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .listing-card:hover {
-            transform: translateY(-20px) scale(1.04);
-            box-shadow: 0 35px 60px -15px rgb(34 197 94 / 0.3);
-        }
-        
-        .portal-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .portal-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
+
         .modern-logo {
             font-family: 'Space Grotesk', sans-serif;
         }
-        
-        .map-container {
-            position: relative;
-            overflow: hidden;
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
-        
-        .map-container::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 40% 50%, rgba(34, 197, 94, 0.3), transparent 70%);
-            z-index: 1;
+
+        .glass-card {
+            background: rgba(18, 18, 22, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(34, 197, 94, 0.25);
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(9, 9, 11, 0.92) 0%, rgba(22, 101, 52, 0.4) 50%, rgba(9, 9, 11, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a9c?q=80&w=2070') center/cover fixed;
+        }
+
+        .nav-scrolled {
+            background: rgba(9, 9, 11, 0.95) !important;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #4ade80 0%, #facc15 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #22c55e;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-white font-sans overflow-x-hidden">
-    <!-- NAVBAR -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 transition-all duration-300">
-        <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div onclick="window.location.reload()" class="flex items-center gap-3 cursor-pointer group">
-                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 via-green-400 to-green-500 rounded-3xl flex items-center justify-center text-3xl font-black modern-logo shadow-xl shadow-green-500/50 group-hover:rotate-12 transition">
-                        RU
-                    </div>
-                    <div class="modern-logo">
-                        <span class="text-3xl font-semibold tracking-tighter">Rental</span>
-                        <span class="text-3xl font-semibold tracking-tighter text-green-400">Up</span>
-                    </div>
-                </div>
-            </div>
+<body class="overflow-x-hidden custom-scrollbar">
 
-            <div class="hidden lg:flex items-center gap-8 text-sm font-medium">
-                <a href="#home" class="hover:text-green-400 transition-colors">Discover</a>
-                <a href="#tenants" class="hover:text-green-400 transition-colors">Tenant Portal</a>
-                <a href="#landlords" class="hover:text-green-400 transition-colors">Landlord Portal</a>
-                <a href="#map" class="hover:text-green-400 transition-colors">Our Locations</a>
+    <!-- NAVIGATION BAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-gradient-to-br from-yellow-400 via-green-400 to-green-600 rounded-2xl flex items-center justify-center text-black font-extrabold text-2xl modern-logo shadow-lg shadow-green-500/30 group-hover:rotate-12 transition-transform">
+                    RU
+                </div>
+                <div class="modern-logo">
+                    <span class="text-2xl font-bold tracking-tight text-white">Rental</span>
+                    <span class="text-2xl font-bold tracking-tight text-green-400">Up</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#discover" class="hover:text-green-400 transition-colors">Discover</a>
+                <a href="#tenants" class="hover:text-green-400 transition-colors">Tenants</a>
+                <a href="#landlords" class="hover:text-green-400 transition-colors">Landlords</a>
+                <a href="#movers" class="hover:text-green-400 transition-colors">Movers Service</a>
                 <a href="#counties" class="hover:text-green-400 transition-colors">Counties</a>
             </div>
 
+            <!-- Action CTAs -->
             <div class="flex items-center gap-3">
-                <button onclick="toggleAuthModal()" 
-                        class="hidden sm:block px-6 py-2.5 text-sm font-semibold rounded-3xl border border-white/30 hover:border-white/60 transition">
-                    Sign in
+                <button onclick="openAuthModal('tenant', 'login')" class="hidden sm:block px-5 py-2.5 text-sm font-medium rounded-full border border-white/20 hover:border-green-400 transition text-white">
+                    Sign In
                 </button>
-                <button onclick="toggleAuthModal()" 
-                        class="px-6 py-2.5 bg-gradient-to-r from-green-500 to-yellow-400 text-black font-bold rounded-3xl text-sm hover:scale-105 active:scale-95 transition-all shadow-lg shadow-green-500/30">
-                    Post Listing
+                <button onclick="openLandlordModal()" class="px-5 py-2.5 bg-gradient-to-r from-green-500 to-yellow-400 text-black font-bold rounded-full text-sm hover:scale-105 active:scale-95 transition-all shadow-lg shadow-green-500/25 flex items-center gap-2">
+                    <i class="fa-solid fa-plus-circle"></i> Post Listing
                 </button>
-                <button id="mobile-menu-btn" class="lg:hidden text-3xl p-2">
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden text-2xl p-2 text-white">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/60 to-zinc-950"></div>
-        
-        <div class="max-w-screen-2xl mx-auto px-6 pt-20 lg:pt-24 relative z-10">
+    <!-- HERO SECTION WITH SEARCH ENGINE -->
+    <section id="discover" class="hero-bg min-h-screen flex items-center pt-28 pb-16 relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-8">
-                    <div class="inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-3xl text-sm backdrop-blur-xl border border-white/20">
-                        <span class="relative flex h-3 w-3">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-3 bg-white/10 px-5 py-2 rounded-full text-xs font-semibold backdrop-blur-md border border-white/20 text-yellow-300">
+                        <span class="relative flex h-2.5 w-2.5">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span>
                         </span>
-                        <span class="font-medium">47 Counties • Real-time Listings</span>
+                        <span>Kenya's #1 Smart Rental &amp; Relocation Platform • 47 Counties</span>
                     </div>
 
-                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tighter">
-                        Find Your <span class="bg-gradient-to-r from-green-300 via-yellow-300 to-white bg-clip-text text-transparent">Perfect Home</span> in Kenya
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight modern-logo">
+                        Find Your <span class="text-gradient">Perfect Home</span> &amp; Move Effortlessly.
                     </h1>
 
-                    <p class="text-xl md:text-2xl text-gray-300 max-w-2xl">
-                        Advanced rental platform with AI matching, virtual tours, verified landlords &amp; seamless payments.
+                    <p class="text-gray-300 text-lg md:text-xl max-w-xl leading-relaxed">
+                        Verified listings, radius mapping, What3Words precise digital addresses, and integrated mover services across Kenya.
                     </p>
 
-                    <div class="glass p-2 rounded-3xl max-w-xl">
-                        <div class="bg-zinc-900/80 rounded-3xl p-2 flex flex-col sm:flex-row gap-2">
-                            <input id="search-input" type="text" 
-                                   class="flex-1 bg-transparent px-6 py-6 text-lg outline-none placeholder:text-gray-400 rounded-3xl"
-                                   placeholder="Thika, Ruiru, Nairobi...">
-                            <button onclick="searchProperties()" 
-                                    class="bg-white text-black px-10 py-6 rounded-3xl font-semibold flex items-center gap-3 hover:bg-yellow-300 transition-all">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <span>Search Homes</span>
-                            </button>
+                    <!-- Stats Row -->
+                    <div class="flex gap-8 py-2">
+                        <div>
+                            <p class="text-3xl font-bold text-green-400 modern-logo">2,400+</p>
+                            <p class="text-xs text-gray-400">Active Listings</p>
+                        </div>
+                        <div class="border-r border-white/10"></div>
+                        <div>
+                            <p class="text-3xl font-bold text-yellow-400 modern-logo">47</p>
+                            <p class="text-xs text-gray-400">Counties Covered</p>
+                        </div>
+                        <div class="border-r border-white/10"></div>
+                        <div>
+                            <p class="text-3xl font-bold text-green-400 modern-logo">98%</p>
+                            <p class="text-xs text-gray-400">Verified Hosts</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Floating WhatsApp -->
-        <a href="https://wa.me/254716547840" target="_blank" 
-           class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-4xl shadow-2xl hover:scale-110 transition-all ring-4 ring-white/30">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-    </section>
-
-    <!-- TENANT PORTAL -->
-    <section id="tenants" class="py-24 bg-zinc-900">
-        <div class="max-w-screen-2xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="px-5 py-2 bg-green-500/10 text-green-400 rounded-full text-sm font-medium">FOR TENANTS</span>
-                <h2 class="text-5xl font-bold mt-4">Tenant Portal</h2>
-                <p class="text-gray-400 max-w-md mx-auto mt-4">Smart search, saved homes, virtual tours and instant applications</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="portal-card glass rounded-3xl p-8">
-                    <i class="fa-solid fa-map-location-dot text-6xl text-green-400 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-3">Smart Location Search</h3>
-                    <p class="text-gray-400">Radius search from Thika Highway, near NIBS, hospitals &amp; more.</p>
-                    <div class="mt-8 pt-8 border-t border-white/10 text-sm text-green-400">Try demo search →</div>
-                </div>
-                <div class="portal-card glass rounded-3xl p-8">
-                    <i class="fa-solid fa-heart text-6xl text-yellow-400 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-3">Saved Homes &amp; Alerts</h3>
-                    <p class="text-gray-400">Get notified when new listings match your criteria.</p>
-                </div>
-                <div class="portal-card glass rounded-3xl p-8">
-                    <i class="fa-solid fa-video text-6xl text-green-400 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-3">Virtual Tours</h3>
-                    <p class="text-gray-400">360° views and video walkthroughs before you visit.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LANDLORD PORTAL -->
-    <section id="landlords" class="py-24">
-        <div class="max-w-screen-2xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="px-5 py-2 bg-yellow-500/10 text-yellow-400 rounded-full text-sm font-medium">FOR LANDLORDS</span>
-                <h2 class="text-5xl font-bold mt-4">Landlord Portal</h2>
-                <p class="text-gray-400 max-w-md mx-auto mt-4">List properties, manage tenants, get verified leads</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="portal-card glass rounded-3xl p-8">
-                    <i class="fa-solid fa-upload text-6xl text-green-400 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-3">Easy Listing</h3>
-                    <p class="text-gray-400">Upload photos, set price, add amenities in minutes.</p>
-                </div>
-                <div class="portal-card glass rounded-3xl p-8">
-                    <i class="fa-solid fa-users text-6xl text-yellow-400 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-3">Tenant Management</h3>
-                    <p class="text-gray-400">Screen applicants, track payments, communicate securely.</p>
-                </div>
-                <div class="portal-card glass rounded-3xl p-8">
-                    <i class="fa-solid fa-chart-line text-6xl text-green-400 mb-6"></i>
-                    <h3 class="text-2xl font-semibold mb-3">Performance Insights</h3>
-                    <p class="text-gray-400">Track views, inquiries and occupancy rates.</p>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <button onclick="toggleAuthModal()" 
-                        class="px-10 py-5 bg-gradient-to-r from-green-500 to-yellow-400 text-black font-bold rounded-3xl text-lg">
-                    Become a Host Today
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURED LISTINGS -->
-    <section class="py-20 bg-zinc-900">
-        <div class="max-w-screen-2xl mx-auto px-6">
-            <div class="flex flex-col lg:flex-row justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-5xl font-bold">Featured Homes</h2>
-                </div>
-                <div class="flex gap-3 mt-6 lg:mt-0">
-                    <button onclick="filterCategory(this)" data-category="all" class="active-filter px-8 py-3 bg-white/10 rounded-3xl text-sm font-medium">All</button>
-                    <button onclick="filterCategory(this)" data-category="apartment" class="px-8 py-3 hover:bg-white/10 rounded-3xl text-sm font-medium">Apartments</button>
-                    <button onclick="filterCategory(this)" data-category="bedsitter" class="px-8 py-3 hover:bg-white/10 rounded-3xl text-sm font-medium">Bedsitters</button>
-                </div>
-            </div>
-
-            <div id="listings-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- JS populated -->
-            </div>
-        </div>
-    </section>
-
-    <!-- OFFICE MAP -->
-    <section id="map" class="py-24 bg-black">
-        <div class="max-w-screen-2xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8">
-                    <h2 class="text-5xl font-bold">Our Headquarters</h2>
-                    <p class="text-xl text-gray-300">Thika Town, Kenya</p>
-                    
-                    <div class="space-y-10">
-                        <div class="flex gap-6">
-                            <div class="text-5xl">📍</div>
+                    <!-- Filter / Search Console -->
+                    <div class="glass p-4 rounded-3xl space-y-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                             <div>
-                                <p class="text-2xl font-medium">Garden City Business Park</p>
-                                <p class="text-green-400 font-mono">THIKA-GC-789</p>
-                                <p class="text-sm text-gray-400 mt-2">Opposite Thika Superhighway Exit</p>
+                                <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">County</label>
+                                <select id="search-county" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:border-green-400 outline-none">
+                                    <option value="">All Counties</option>
+                                    <option value="Nairobi">Nairobi</option>
+                                    <option value="Kiambu">Kiambu</option>
+                                    <option value="Nakuru">Nakuru</option>
+                                    <option value="Mombasa">Mombasa</option>
+                                    <option value="Kajiado">Kajiado</option>
+                                    <option value="Kisumu">Kisumu</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">Location / Area</label>
+                                <input id="search-area" type="text" placeholder="e.g. Westlands, Ruiru" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:border-green-400 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">House Type</label>
+                                <select id="search-type" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:border-green-400 outline-none">
+                                    <option value="">Any Type</option>
+                                    <option value="Bedsitter">Bedsitter / Studio</option>
+                                    <option value="1 Bedroom">1 Bedroom</option>
+                                    <option value="2 Bedrooms">2 Bedrooms</option>
+                                    <option value="3 Bedrooms">3 Bedrooms</option>
+                                    <option value="Bungalow">Bungalow</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-1">Max Price (KSh)</label>
+                                <select id="search-price" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:border-green-400 outline-none">
+                                    <option value="">Any Price</option>
+                                    <option value="15000">Up to 15,000</option>
+                                    <option value="30000">Up to 30,000</option>
+                                    <option value="50000">Up to 50,000</option>
+                                    <option value="100000">Up to 100,000</option>
+                                </select>
                             </div>
                         </div>
-                        <div>
-                            <a href="https://wa.me/254716547840" class="flex items-center gap-6 group">
-                                <div class="text-5xl">💬</div>
-                                <div>
-                                    <p class="text-3xl font-mono group-hover:text-green-400">0716 547 840</p>
-                                    <p class="text-sm text-gray-400">WhatsApp • Calls • Support</p>
-                                </div>
-                            </a>
-                        </div>
+                        <button onclick="executeSearch()" class="w-full py-3.5 bg-gradient-to-r from-green-500 to-yellow-400 text-black font-bold rounded-xl text-base hover:opacity-95 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i> Search Homes Now
+                        </button>
                     </div>
                 </div>
-                
-                <!-- Improved Map -->
-                <div class="map-container h-96 lg:h-[520px] rounded-3xl overflow-hidden border border-white/10 relative shadow-2xl">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.5!2d37.082!3d-1.036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMDInMDkuNiJTIDM3wrA0OScwMC4wIkU!5e0!3m2!1sen!2ske!4v1710000000000" 
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                    <div class="absolute top-6 left-6 bg-black/70 backdrop-blur-md px-6 py-4 rounded-3xl text-sm z-10">
-                        <div class="flex items-center gap-3">
-                            <span class="text-green-400">●</span>
-                            <span class="font-medium">Thika Office - Open Now</span>
+
+                <!-- Visual Featured Card preview -->
+                <div class="lg:col-span-5 hidden lg:block">
+                    <div class="glass-card rounded-3xl p-6 relative overflow-hidden group">
+                        <div class="absolute top-4 right-4 bg-green-500 text-black font-bold text-xs px-3 py-1 rounded-full z-10">
+                            Verified Vacant
+                        </div>
+                        <div class="h-64 rounded-2xl bg-cover bg-center mb-6 transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000');"></div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-xl font-bold modern-logo text-white">Executive 2BR Luxury Apartment</h3>
+                                    <p class="text-xs text-green-400"><i class="fa-solid fa-location-dot"></i> Westlands, Nairobi • ///table.chair.window</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-2xl font-extrabold text-yellow-300">KSh 35,000</span>
+                                    <span class="text-xs text-gray-400 block">/ month</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 bg-white/10 text-xs rounded-md text-gray-300">💧 24/7 Water</span>
+                                <span class="px-2.5 py-1 bg-white/10 text-xs rounded-md text-gray-300">🔒 CCTV</span>
+                                <span class="px-2.5 py-1 bg-white/10 text-xs rounded-md text-gray-300">🅿️ Parking</span>
+                                <span class="px-2.5 py-1 bg-white/10 text-xs rounded-md text-gray-300">🌐 Fiber WiFi</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -291,179 +232,599 @@
         </div>
     </section>
 
-    <!-- COUNTIES -->
-    <section id="counties" class="py-24 bg-zinc-900">
-        <div class="max-w-screen-2xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold">Available Across Kenya</h2>
+    <!-- PORTALS HUB (TENANTS, LANDLORDS, MOVERS) -->
+    <section class="py-20 bg-zinc-900 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="px-4 py-1.5 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full text-xs font-semibold uppercase tracking-wider">ECOSYSTEM PORTALS</span>
+                <h2 class="text-4xl font-extrabold modern-logo mt-3">Tailored for Everyone</h2>
+                <p class="text-gray-400 text-sm mt-2">Whether you are searching for a home, managing properties, or offering moving services.</p>
             </div>
-            <div id="counties-container" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4">
-                <!-- JS populated -->
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tenant Portal Card -->
+                <div id="tenants" class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-green-500/10 border border-green-500/30 rounded-2xl flex items-center justify-center text-green-400 text-3xl mb-6">
+                            🏠
+                        </div>
+                        <h3 class="text-2xl font-bold modern-logo mb-3">Tenant Portal</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Smart radius search, What3Words addresses, verified landlord leads, and instant mover booking.
+                        </p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-400"></i> Save favorite listings &amp; set price alerts</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-400"></i> Direct chat with verified caretakers</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-400"></i> One-click relocation quote request</li>
+                        </ul>
+                    </div>
+                    <button onclick="openAuthModal('tenant', 'signup')" class="w-full py-3 bg-white/10 hover:bg-green-500 hover:text-black font-semibold rounded-xl text-sm transition">
+                        Tenant Login / Signup →
+                    </button>
+                </div>
+
+                <!-- Landlord Portal Card -->
+                <div id="landlords" class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-yellow-500/10 border border-yellow-500/30 rounded-2xl flex items-center justify-center text-yellow-400 text-3xl mb-6">
+                            🔑
+                        </div>
+                        <h3 class="text-2xl font-bold modern-logo mb-3">Landlord Portal</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            List properties, manage vacancies, set utility tags, and connect with high-intent tenants.
+                        </p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-yellow-400"></i> Instant listing publication with photos</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-yellow-400"></i> Vacancy tracking &amp; rent updates</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-yellow-400"></i> Flag utilities (CCTV, Water, WiFi)</li>
+                        </ul>
+                    </div>
+                    <button onclick="openLandlordModal()" class="w-full py-3 bg-yellow-400 text-black font-semibold rounded-xl text-sm hover:bg-yellow-300 transition">
+                        Post Property Listing →
+                    </button>
+                </div>
+
+                <!-- Movers Portal Card -->
+                <div id="movers" class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-blue-500/10 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 text-3xl mb-6">
+                            🚛
+                        </div>
+                        <h3 class="text-2xl font-bold modern-logo mb-3">Movers Portal</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Register your moving company to receive relocation requests from tenants moving into new homes.
+                        </p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-400"></i> Receive relocation leads across counties</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-400"></i> List truck sizes &amp; service pricing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-blue-400"></i> Verified Mover Badge for trust</li>
+                        </ul>
+                    </div>
+                    <button onclick="openMoverModal()" class="w-full py-3 bg-white/10 hover:bg-blue-500 hover:text-white font-semibold rounded-xl text-sm transition">
+                        Register Moving Service →
+                    </button>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROPERTY LISTINGS -->
+    <section id="listings-section" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-green-400 font-semibold text-xs tracking-widest uppercase">REAL-TIME VACANCIES</span>
+                <h2 class="text-4xl font-extrabold modern-logo text-white mt-1">Featured Properties</h2>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                <button onclick="filterCategory(this, 'all')" class="active-category px-5 py-2 rounded-full text-xs font-semibold bg-green-500 text-black">All</button>
+                <button onclick="filterCategory(this, '1 Bedroom')" class="px-5 py-2 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 text-white">1 Bedroom</button>
+                <button onclick="filterCategory(this, '2 Bedrooms')" class="px-5 py-2 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 text-white">2 Bedrooms</button>
+                <button onclick="filterCategory(this, 'Bedsitter')" class="px-5 py-2 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 text-white">Bedsitters</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Grid -->
+        <div id="listings-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- JS populated listings will render here -->
+        </div>
+    </section>
+
+    <!-- REGISTERED MOVERS DIRECTORY -->
+    <section class="py-20 bg-zinc-950 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+                <div>
+                    <span class="text-yellow-400 font-semibold text-xs tracking-widest uppercase">VERIFIED PARTNERS</span>
+                    <h2 class="text-4xl font-extrabold modern-logo text-white mt-1">Trusted Moving Services</h2>
+                </div>
+                <button onclick="openMoverModal()" class="mt-4 md:mt-0 px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-full transition">
+                    + Register Your Moving Company
+                </button>
+            </div>
+
+            <div id="movers-grid" class="grid md:grid-cols-3 gap-6">
+                <!-- JS populated Movers -->
+            </div>
+        </div>
+    </section>
+
+    <!-- HEADQUARTERS & GOOGLE MAPS -->
+    <section id="map" class="py-24 bg-zinc-900 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-bold text-green-400 tracking-widest uppercase">PHYSICAL OFFICE & SUPPORT</span>
+                    <h2 class="text-4xl font-extrabold modern-logo">Visit Our Main HQ</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Need help finding or listing a property? Walk into our Thika Office or reach out to our dedicated support channels.
+                    </p>
+
+                    <div class="space-y-6 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-green-500/10 border border-green-500/30 rounded-2xl flex items-center justify-center text-green-400 text-xl flex-shrink-0">
+                                📍
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Garden City Business Park</h4>
+                                <p class="text-xs text-green-400 font-mono">THIKA-GC-789 • Opposite Superhighway</p>
+                                <p class="text-xs text-gray-400 mt-1">Thika Town, Kenya</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-yellow-500/10 border border-yellow-500/30 rounded-2xl flex items-center justify-center text-yellow-400 text-xl flex-shrink-0">
+                                💬
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Official WhatsApp Hotline</h4>
+                                <a href="https://wa.me/254716547840" target="_blank" class="text-sm font-mono text-yellow-300 hover:underline">0716 547 840</a>
+                                <p class="text-xs text-gray-400 mt-1">Available Mon – Sat (8:00 AM – 6:00 PM)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Embedded Google Map -->
+                <div class="lg:col-span-7 h-96 lg:h-[420px] rounded-3xl overflow-hidden border border-white/10 relative shadow-2xl">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.5!2d37.082!3d-1.036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMDInMDkuNiJTIDM3wrA0OScwMC4wIkU!5e0!3m2!1sen!2ske!4v1710000000000" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                    <div class="absolute top-4 left-4 glass px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2">
+                        <span class="h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span>Thika HQ - Open Now</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 47 COUNTIES DIRECTORY -->
+    <section id="counties" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold modern-logo">Available Across All 47 Counties</h2>
+            <p class="text-gray-400 text-xs mt-2">Click any county to filter rental listings instantly</p>
+        </div>
+        <div id="counties-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            <!-- JS populated -->
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-20 border-t border-white/10">
-        <div class="max-w-screen-2xl mx-auto px-6 text-sm">
-            <div class="grid md:grid-cols-4 gap-10">
-                <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="modern-logo text-5xl font-black text-green-400">RU</div>
-                        <div class="modern-logo text-4xl font-semibold">Rental Up</div>
-                    </div>
-                    <p class="text-gray-400">Modern rental experience for Kenya.</p>
+    <footer class="bg-black py-16 border-t border-white/10 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 mb-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-green-500 rounded-xl flex items-center justify-center text-black font-extrabold text-sm modern-logo">RU</div>
+                    <span class="text-xl font-bold text-white modern-logo">Rental<span class="text-green-400">Up</span></span>
                 </div>
-                <div class="space-y-2">
-                    <div class="font-semibold mb-4">Platform</div>
-                    <div>Tenant Portal</div>
-                    <div>Landlord Portal</div>
-                    <div>Browse Homes</div>
-                </div>
-                <div class="space-y-2">
-                    <div class="font-semibold mb-4">Company</div>
-                    <div>About</div>
-                    <div>Contact</div>
-                    <div>Careers</div>
-                </div>
-                <div>
-                    <div class="font-semibold mb-4">Support</div>
-                    <a href="https://wa.me/254716547840" class="text-green-400 flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp"></i> 0716 547 840
-                    </a>
-                </div>
+                <p class="leading-relaxed">Kenya's primary marketplace for verified rental properties and moving logistics services.</p>
             </div>
-            <div class="text-center text-xs text-gray-500 mt-20">© 2026 Rental Up Kenya. All Rights Reserved.</div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#discover" class="hover:text-green-400">Discover Homes</a></li>
+                    <li><a href="#tenants" class="hover:text-green-400">Tenant Hub</a></li>
+                    <li><a href="#landlords" class="hover:text-green-400">Landlord Portal</a></li>
+                    <li><a href="#movers" class="hover:text-green-400">Movers Network</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-4">Portals</h4>
+                <ul class="space-y-2">
+                    <li><a onclick="openLandlordModal()" class="cursor-pointer hover:text-green-400">Post Property</a></li>
+                    <li><a onclick="openMoverModal()" class="cursor-pointer hover:text-green-400">Register Moving Service</a></li>
+                    <li><a onclick="openAuthModal('tenant', 'login')" class="cursor-pointer hover:text-green-400">Account Sign In</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-4">Support &amp; Contact</h4>
+                <p class="mb-2">Thika Town HQ, Kenya</p>
+                <a href="https://wa.me/254716547840" class="text-green-400 flex items-center gap-2 text-sm font-semibold">
+                    <i class="fa-brands fa-whatsapp"></i> +254 716 547 840
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500">
+            <div>© 2026 Rental Up Kenya. All rights reserved.</div>
+            <div>Built for Tenants, Landlords &amp; Movers</div>
         </div>
     </footer>
 
-    <!-- AUTH MODAL -->
-    <div id="auth-modal" class="hidden fixed inset-0 bg-black/90 z-[200] flex items-center justify-center p-4">
-        <div class="glass w-full max-w-lg rounded-3xl p-10">
-            <h3 class="text-3xl font-semibold text-center mb-10">Welcome to Rental Up</h3>
-            <button onclick="googleLogin()" class="w-full py-6 bg-white text-black rounded-3xl flex items-center justify-center gap-4 text-lg font-medium mb-6">
-                <i class="fa-brands fa-google"></i> Continue with Google
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/254716547840" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 text-black rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform ring-4 ring-green-400/30">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- 1. MULTI-ROLE AUTHENTICATION MODAL -->
+    <div id="auth-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+        <div class="glass-card bg-zinc-950 w-full max-w-md rounded-3xl p-8 border border-white/10 relative">
+            <button onclick="closeModal('auth-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-white text-lg">✕</button>
+            <h3 class="text-2xl font-bold modern-logo text-center mb-2" id="auth-title">Welcome Back</h3>
+            <p class="text-xs text-gray-400 text-center mb-6">Select your portal role to continue</p>
+
+            <!-- Role Selector Tabs -->
+            <div class="flex bg-zinc-900 p-1 rounded-xl mb-6 border border-white/10">
+                <button id="role-btn-tenant" onclick="setAuthRole('tenant')" class="flex-1 py-2 text-xs font-semibold rounded-lg transition bg-green-500 text-black">Tenant</button>
+                <button id="role-btn-landlord" onclick="setAuthRole('landlord')" class="flex-1 py-2 text-xs font-semibold text-gray-400 transition">Landlord</button>
+                <button id="role-btn-mover" onclick="setAuthRole('mover')" class="flex-1 py-2 text-xs font-semibold text-gray-400 transition">Mover</button>
+            </div>
+
+            <!-- Google OAuth Button -->
+            <button onclick="demoLogin('Google')" class="w-full py-3 bg-white text-black font-semibold rounded-xl flex items-center justify-center gap-3 text-sm mb-4 hover:bg-gray-100 transition">
+                <i class="fa-brands fa-google text-red-500"></i> Continue with Google
             </button>
-            <div class="text-center text-xs text-gray-400 my-6">OR SIGN IN WITH EMAIL</div>
-            <input id="modal-email" type="email" placeholder="Email" class="block w-full mb-4 bg-zinc-900 border border-white/10 rounded-3xl px-8 py-6 outline-none focus:border-green-400">
-            <input id="modal-pass" type="password" placeholder="Password" class="block w-full mb-8 bg-zinc-900 border border-white/10 rounded-3xl px-8 py-6 outline-none focus:border-green-400">
-            <button onclick="loginDemo()" class="w-full py-7 bg-gradient-to-r from-green-400 to-yellow-400 text-black font-bold rounded-3xl text-lg">Sign In</button>
-            <div onclick="toggleAuthModal()" class="text-center mt-8 text-sm cursor-pointer text-gray-400 hover:text-white">Close</div>
+            <div class="text-center text-[10px] text-gray-500 uppercase tracking-widest my-3">OR WITH EMAIL</div>
+
+            <div class="space-y-3">
+                <input id="auth-email" type="email" placeholder="Email Address" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 text-white">
+                <input id="auth-password" type="password" placeholder="Password" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-green-400 text-white">
+                <button onclick="demoLogin('Email')" class="w-full py-3.5 bg-gradient-to-r from-green-500 to-yellow-400 text-black font-bold rounded-xl text-sm hover:opacity-95 transition">
+                    Sign In to Portal
+                </button>
+            </div>
         </div>
     </div>
 
+    <!-- 2. LANDLORD POST PROPERTY MODAL -->
+    <div id="landlord-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+        <div class="glass-card bg-zinc-950 w-full max-w-2xl rounded-3xl p-8 border border-white/10 max-h-[90vh] overflow-y-auto custom-scrollbar relative">
+            <button onclick="closeModal('landlord-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-white text-lg">✕</button>
+            <h3 class="text-2xl font-bold modern-logo mb-1 text-white">List Your Rental Property</h3>
+            <p class="text-xs text-gray-400 mb-6">Fill in details to make your vacant unit available across Kenya.</p>
+
+            <form onsubmit="handlePostListing(event)" class="space-y-4">
+                <div>
+                    <label class="text-xs font-semibold text-gray-300 block mb-1">Apartment / Building Name *</label>
+                    <input required type="text" id="prop-title" placeholder="e.g. Sunrise Heights Apartments" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-300 block mb-1">County *</label>
+                        <select id="prop-county" required class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3 py-3 text-sm text-white focus:border-green-400 outline-none">
+                            <option value="Nairobi">Nairobi</option>
+                            <option value="Kiambu">Kiambu</option>
+                            <option value="Nakuru">Nakuru</option>
+                            <option value="Mombasa">Mombasa</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-300 block mb-1">Area / Locality *</label>
+                        <input required type="text" id="prop-area" placeholder="e.g. Ruiru, Kilimani" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-300 block mb-1">What3Words Address</label>
+                        <input type="text" id="prop-w3w" placeholder="e.g. ///table.chair.window" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-300 block mb-1">House Type *</label>
+                        <select id="prop-type" required class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3 py-3 text-sm text-white focus:border-green-400 outline-none">
+                            <option value="Bedsitter">Bedsitter / Studio</option>
+                            <option value="1 Bedroom">1 Bedroom</option>
+                            <option value="2 Bedrooms">2 Bedrooms</option>
+                            <option value="3 Bedrooms">3 Bedrooms</option>
+                            <option value="Bungalow">Bungalow</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-300 block mb-1">Monthly Rent (KSh) *</label>
+                        <input required type="number" id="prop-price" placeholder="e.g. 25000" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                    </div>
+                </div>
+
+                <!-- Utilities Checkboxes -->
+                <div>
+                    <label class="text-xs font-semibold text-gray-300 block mb-2">Included Utilities &amp; Amenities</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                        <label class="flex items-center gap-2 bg-zinc-900 p-2 rounded-lg border border-white/5 cursor-pointer">
+                            <input type="checkbox" value="24/7 Water" class="prop-util accent-green-500"> 💧 Water
+                        </label>
+                        <label class="flex items-center gap-2 bg-zinc-900 p-2 rounded-lg border border-white/5 cursor-pointer">
+                            <input type="checkbox" value="CCTV Security" class="prop-util accent-green-500"> 🔒 CCTV
+                        </label>
+                        <label class="flex items-center gap-2 bg-zinc-900 p-2 rounded-lg border border-white/5 cursor-pointer">
+                            <input type="checkbox" value="Parking Space" class="prop-util accent-green-500"> 🅿️ Parking
+                        </label>
+                        <label class="flex items-center gap-2 bg-zinc-900 p-2 rounded-lg border border-white/5 cursor-pointer">
+                            <input type="checkbox" value="WiFi Internet" class="prop-util accent-green-500"> 🌐 WiFi
+                        </label>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-xs font-semibold text-gray-300 block mb-1">Host / Caretaker Phone *</label>
+                        <input required type="tel" id="prop-phone" placeholder="07XX XXX XXX" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-300 block mb-1">Image URL</label>
+                        <input type="url" id="prop-img" placeholder="https://..." class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-green-500 to-yellow-400 text-black font-bold rounded-xl text-base hover:opacity-95 transition mt-4">
+                    Submit Property Listing →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. MOVER REGISTRATION MODAL -->
+    <div id="mover-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+        <div class="glass-card bg-zinc-950 w-full max-w-lg rounded-3xl p-8 border border-white/10 relative">
+            <button onclick="closeModal('mover-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-white text-lg">✕</button>
+            <h3 class="text-2xl font-bold modern-logo mb-1 text-white">Register Moving Service</h3>
+            <p class="text-xs text-gray-400 mb-6">Join our network of verified movers across Kenya.</p>
+
+            <form onsubmit="handlePostMover(event)" class="space-y-4">
+                <div>
+                    <label class="text-xs font-semibold text-gray-300 block mb-1">Company / Service Name *</label>
+                    <input required type="text" id="mover-name" placeholder="e.g. Swift Relocations Kenya" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-300 block mb-1">Service Base Location *</label>
+                    <input required type="text" id="mover-base" placeholder="e.g. Nairobi &amp; Kiambu Counties" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-300 block mb-1">Starting Price (KSh) *</label>
+                    <input required type="number" id="mover-rate" placeholder="e.g. 5000" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-300 block mb-1">Contact Phone Number *</label>
+                    <input required type="tel" id="mover-phone" placeholder="07XX XXX XXX" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-green-400 outline-none">
+                </div>
+                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-base transition mt-2">
+                    Register Moving Business →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        function init() {
-            // Listings
-            const listings = [
-                { title: "Modern 2 Bedroom Apartment", location: "Thika", price: "28,000", type: "apartment", img: "https://picsum.photos/id/1015/800/600" },
-                { title: "Luxury 3 Bedroom", location: "Ruiru", price: "52,000", type: "apartment", img: "https://picsum.photos/id/201/800/600" },
-                { title: "Spacious Bedsitter", location: "Kiambu", price: "15,000", type: "bedsitter", img: "https://picsum.photos/id/251/800/600" },
-                { title: "Family Bungalow", location: "Thika", price: "85,000", type: "apartment", img: "https://picsum.photos/id/301/800/600" },
-            ];
+        // Data State
+        let activeRole = 'tenant';
+        
+        let sampleListings = [
+            { id: 1, title: "Modern 2 Bedroom Apartment", location: "Westlands, Nairobi", county: "Nairobi", price: 35000, type: "2 Bedrooms", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000", w3w: "///table.chair.window", utils: ["24/7 Water", "CCTV Security", "Parking Space"] },
+            { id: 2, title: "Executive Bedsitter Near Campus", location: "Ruiru, Kiambu", county: "Kiambu", price: 11000, type: "Bedsitter", img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1000", w3w: "///home.speed.lamp", utils: ["WiFi Internet", "24/7 Water"] },
+            { id: 3, title: "Spacious 1BR Modern Unit", location: "Thika Town", county: "Kiambu", price: 18500, type: "1 Bedroom", img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1000", w3w: "///market.gate.flow", utils: ["Parking Space", "CCTV Security"] },
+            { id: 4, title: "3 Bedroom Master Ensuite Bungalow", location: "Kitengela, Kajiado", county: "Kajiado", price: 45000, type: "3 Bedrooms", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a9c?q=80&w=1000", w3w: "///green.yard.fence", utils: ["Parking Space", "WiFi Internet", "CCTV Security"] }
+        ];
 
-            const grid = document.getElementById('listings-grid');
-            
-            function renderListings(filteredListings) {
-                grid.innerHTML = '';
-                filteredListings.forEach(listing => {
-                    const cardHTML = `
-                        <div class="listing-card glass rounded-3xl overflow-hidden cursor-pointer group" onclick="viewProperty()">
-                            <div class="h-64 bg-cover bg-center" style="background-image: url('${listing.img}')"></div>
-                            <div class="p-6">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <h3 class="font-semibold text-xl group-hover:text-green-400 transition">${listing.title}</h3>
-                                        <p class="text-green-400">${listing.location} • Verified</p>
-                                    </div>
-                                    <div class="text-right">
-                                        <div class="text-2xl font-bold text-yellow-300">KSh ${listing.price}</div>
-                                        <div class="text-xs text-gray-400">/ month</div>
-                                    </div>
-                                </div>
-                                <button class="mt-6 w-full py-4 bg-white/10 hover:bg-green-500 hover:text-black transition-all rounded-2xl text-sm font-medium">View Details</button>
-                            </div>
-                        </div>
-                    `;
-                    grid.innerHTML += cardHTML;
-                });
-            }
+        let sampleMovers = [
+            { id: 1, name: "SwiftRelocations Kenya", base: "Nairobi & Kiambu", rate: 6500, phone: "0716547840" },
+            { id: 2, name: "Boda & PickUp Movers", base: "Thika & Ruiru Area", rate: 3500, phone: "0712345678" },
+            { id: 3, name: "County Express Movers", base: "Nationwide (All 47 Counties)", rate: 12000, phone: "0798765432" }
+        ];
 
-            renderListings(listings);
+        const counties = ["Nairobi","Kiambu","Machakos","Kajiado","Murang'a","Nyeri","Nakuru","Mombasa","Kisumu","Eldoret","Kakamega","Meru","Embu","Tharaka Nithi","Garissa","Wajir","Mandera","Marsabit","Isiolo","Kitui","Makueni","Nyandarua","Laikipia","Baringo","Bomet","Kericho","Nandi","Uasin Gishu","Elgeyo Marakwet","Trans Nzoia","West Pokot","Samburu","Turkana","Kwale","Kilifi","Tana River","Lamu","Taita Taveta","Busia","Siaya","Homa Bay","Migori","Kisii","Nyamira","Vihiga"];
 
-            window.filterCategory = function(btn) {
-                document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('bg-white/20', 'active-filter'));
-                btn.classList.add('bg-white/20', 'active-filter');
-                
-                const category = btn.dataset.category;
-                if (category === 'all') {
-                    renderListings(listings);
-                } else {
-                    const filtered = listings.filter(l => l.type === category);
-                    renderListings(filtered.length ? filtered : listings);
-                }
-            };
+        // Initialization
+        window.onload = function() {
+            renderListings(sampleListings);
+            renderMovers();
+            renderCounties();
 
-            // Counties
-            const counties = ["Nairobi","Kiambu","Machakos","Kajiado","Murang'a","Nyeri","Nakuru","Mombasa","Kisumu","Eldoret","Kakamega","Meru","Embu","Tharaka Nithi","Garissa","Wajir","Mandera","Marsabit","Isiolo","Kitui","Makueni","Nyandarua","Laikipia","Baringo","Bomet","Kericho","Nandi","Uasin Gishu","Elgeyo Marakwet","Trans Nzoia","West Pokot","Samburu","Turkana","Kwale","Kilifi","Tana River","Lamu","Taita Taveta","Busia","Siaya","Homa Bay","Migori","Kisii","Nyamira","Vihiga"];
-            const countiesContainer = document.getElementById('counties-container');
-            counties.forEach(county => {
-                const el = document.createElement('div');
-                el.className = "glass text-center py-6 rounded-3xl hover:bg-green-500/10 hover:scale-105 transition-all cursor-pointer text-sm font-medium";
-                el.textContent = county;
-                countiesContainer.appendChild(el);
-            });
-
-            // Navbar scroll effect
             window.addEventListener('scroll', () => {
                 const nav = document.getElementById('navbar');
-                if (window.scrollY > 80) {
+                if (window.scrollY > 60) {
                     nav.classList.add('nav-scrolled');
                 } else {
                     nav.classList.remove('nav-scrolled');
                 }
             });
+        };
 
-            // Mobile menu
-            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-                alert("Full mobile menu would appear here in production build.");
-            });
+        // Render Property Cards
+        function renderListings(items) {
+            const grid = document.getElementById('listings-grid');
+            if(items.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400">No properties found matching your search.</div>`;
+                return;
+            }
 
-            console.log('%c✅ Rental Up - Fully Responsive & Modern', 'color:#22c55e; font-family:monospace');
+            grid.innerHTML = items.map(l => `
+                <div class="glass-card rounded-3xl overflow-hidden group flex flex-col justify-between">
+                    <div>
+                        <div class="h-56 bg-cover bg-center relative" style="background-image: url('${l.img}')">
+                            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-green-400 text-xs px-3 py-1 rounded-full font-semibold">
+                                ${l.type}
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-white modern-logo group-hover:text-green-400 transition">${l.title}</h3>
+                            </div>
+                            <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-location-dot text-green-400"></i> ${l.location}</p>
+                            <p class="text-[11px] font-mono text-yellow-400/90 mb-4">${l.w3w || '///rental.up.kenya'}</p>
+
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${l.utils.map(u => `<span class="px-2 py-0.5 bg-white/5 border border-white/10 text-[10px] text-gray-300 rounded-md">${u}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                        <div>
+                            <span class="text-xl font-extrabold text-yellow-300">KSh ${l.price.toLocaleString()}</span>
+                            <span class="text-[10px] text-gray-400">/mo</span>
+                        </div>
+                        <button onclick="alert('Contacting Caretaker for ${l.title}...')" class="px-4 py-2 bg-green-500 hover:bg-green-400 text-black text-xs font-bold rounded-xl transition">
+                            Inquire Now
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function searchProperties() {
-            const input = document.getElementById('search-input').value.trim();
-            if (input) {
-                window.scrollTo({ top: 1200, behavior: 'smooth' });
-                setTimeout(() => {
-                    alert(`Showing results for "${input}" in Thika & nearby areas...`);
-                }, 800);
+        // Render Movers
+        function renderMovers() {
+            const container = document.getElementById('movers-grid');
+            container.innerHTML = sampleMovers.map(m => `
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl">🚚</div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">${m.name}</h4>
+                            <p class="text-xs text-gray-400">${m.base}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between text-xs pt-4 border-t border-white/10">
+                        <span class="text-gray-400">Rates from: <strong class="text-white">KSh ${m.rate.toLocaleString()}</strong></span>
+                        <a href="tel:${m.phone}" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold">Call Mover</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Counties Grid
+        function renderCounties() {
+            const container = document.getElementById('counties-container');
+            counties.forEach(c => {
+                const item = document.createElement('div');
+                item.className = "glass p-3 rounded-xl text-center text-xs font-medium text-gray-300 hover:text-green-400 hover:border-green-400/40 cursor-pointer transition";
+                item.innerText = c;
+                item.onclick = () => {
+                    document.getElementById('search-county').value = c;
+                    executeSearch();
+                };
+                container.appendChild(item);
+            });
+        }
+
+        // Filter / Search Logic
+        function executeSearch() {
+            const county = document.getElementById('search-county').value.toLowerCase();
+            const area = document.getElementById('search-area').value.toLowerCase();
+            const type = document.getElementById('search-type').value.toLowerCase();
+            const price = parseInt(document.getElementById('search-price').value) || Infinity;
+
+            const filtered = sampleListings.filter(l => {
+                const matchCounty = !county || l.county.toLowerCase() === county;
+                const matchArea = !area || l.location.toLowerCase().includes(area);
+                const matchType = !type || l.type.toLowerCase().includes(type);
+                const matchPrice = l.price <= price;
+                return matchCounty && matchArea && matchType && matchPrice;
+            });
+
+            renderListings(filtered);
+            document.getElementById('listings-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function filterCategory(btn, category) {
+            document.querySelectorAll('.active-category').forEach(b => {
+                b.classList.remove('active-category', 'bg-green-500', 'text-black');
+                b.classList.add('bg-white/10', 'text-white');
+            });
+            btn.classList.add('active-category', 'bg-green-500', 'text-black');
+
+            if(category === 'all') {
+                renderListings(sampleListings);
             } else {
-                alert("Enter a location to search (e.g. Thika, Ruiru)");
+                renderListings(sampleListings.filter(l => l.type === category));
             }
         }
 
-        function viewProperty() {
-            alert("Property Detail View:\n\n• Full photos & 360 tour\n• Amenities: Parking, CCTV, Water 24/7\n• Landlord verified\n• Apply Now button");
+        // Modal Controls & Form Submissions
+        function openAuthModal(role, mode) {
+            setAuthRole(role);
+            document.getElementById('auth-modal').classList.remove('hidden');
         }
 
-        function toggleAuthModal() {
-            document.getElementById('auth-modal').classList.toggle('hidden');
+        function setAuthRole(role) {
+            activeRole = role;
+            ['tenant', 'landlord', 'mover'].forEach(r => {
+                const btn = document.getElementById(`role-btn-${r}`);
+                if(r === role) {
+                    btn.className = "flex-1 py-2 text-xs font-semibold rounded-lg transition bg-green-500 text-black";
+                } else {
+                    btn.className = "flex-1 py-2 text-xs font-semibold text-gray-400 transition";
+                }
+            });
         }
 
-        function googleLogin() {
-            alert("Google authentication successful (Demo mode)");
-            toggleAuthModal();
+        function openLandlordModal() {
+            document.getElementById('landlord-modal').classList.remove('hidden');
         }
 
-        function loginDemo() {
-            const email = document.getElementById('modal-email').value;
-            alert(`Welcome${email ? ' back, ' + email.split('@')[0] : ''}! You are now in the Tenant/Landlord dashboard.`);
-            toggleAuthModal();
+        function openMoverModal() {
+            document.getElementById('mover-modal').classList.remove('hidden');
         }
 
-        window.onload = init;
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function demoLogin(type) {
+            alert(`Signed in successfully as [${activeRole.toUpperCase()}] via ${type}!`);
+            closeModal('auth-modal');
+        }
+
+        function handlePostListing(e) {
+            e.preventDefault();
+            const checkedUtils = Array.from(document.querySelectorAll('.prop-util:checked')).map(c => c.value);
+            
+            const newProp = {
+                id: Date.now(),
+                title: document.getElementById('prop-title').value,
+                county: document.getElementById('prop-county').value,
+                location: `${document.getElementById('prop-area').value}, ${document.getElementById('prop-county').value}`,
+                price: parseInt(document.getElementById('prop-price').value),
+                type: document.getElementById('prop-type').value,
+                w3w: document.getElementById('prop-w3w').value || "///rental.up.kenya",
+                img: document.getElementById('prop-img').value || "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1000",
+                utils: checkedUtils.length ? checkedUtils : ["24/7 Water"]
+            };
+
+            sampleListings.unshift(newProp);
+            renderListings(sampleListings);
+            closeModal('landlord-modal');
+            alert("Success! Property listing published.");
+            document.getElementById('listings-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handlePostMover(e) {
+            e.preventDefault();
+            const newMover = {
+                id: Date.now(),
+                name: document.getElementById('mover-name').value,
+                base: document.getElementById('mover-base').value,
+                rate: parseInt(document.getElementById('mover-rate').value),
+                phone: document.getElementById('mover-phone').value
+            };
+
+            sampleMovers.unshift(newMover);
+            renderMovers();
+            closeModal('mover-modal');
+            alert("Registered moving business successfully!");
+        }
     </script>
 </body>
 </html>
